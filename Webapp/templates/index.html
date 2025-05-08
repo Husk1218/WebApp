@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Lists</h1>
+    <form action="/add" method="POST">
+        <input type="text" name="task" placeholder="Enter a new task" required>
+        <button type="submit">Add</button>
+    </form>
+    <ul>
+        {% for idx, task in tasks %}
+            <li>
+                {{ task }}
+                <form action="/delete/{{ idx }}" method="post" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
